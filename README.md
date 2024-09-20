@@ -1,71 +1,41 @@
-# Landify Design - Flutter Web Implementation
+# BGTunnel
 
-![License](https://img.shields.io/badge/license-MIT-green)
+[BGTunnel](https://bgtunnel.com/) is a privacy-focused VPN and proxy service provider designed to secure internet connections and bypass geographic restrictions. Whether you want to browse anonymously, unblock websites, or protect your data from prying eyes, BGTunnel offers fast, reliable, and encrypted connections that prioritize your security and anonymity.
 
-This project is a Flutter web implementation of the Landify Landing Page UI Kit. The UI design was provided by the Figma community and has been converted into a functional web application using Flutter.
+## Features
 
-> **Note:** This is my learning project to explore flutter website.
+- **High-Speed VPN**: Enjoy fast and secure VPN connections for seamless browsing, streaming, and gaming.
+- **Global Servers**: Access geo-restricted content by connecting to servers around the world.
+- **Complete Anonymity**: No logs are kept, ensuring your privacy is protected at all times.
+- **User-Friendly Interface**: Easy-to-use dashboard with one-click connection setup.
+- **24/7 Customer Support**: Round-the-clock assistance for any issues or inquiries.
 
-## 🌐 Live Demo
+## How It Works
 
-You can access the live demo [here](https://landify-design-flutter.vercel.app).
+2. **Download the App**: Install the VPN application on your device (available iOS and Android).
+3. **Choose a Server**: Select a server from a variety of locations across the globe.
+4. **Connect**: Click to connect and enjoy a secure, anonymous browsing experience.
 
-## 🎨 Design Reference
+## Supported Platforms
 
-This project is based on the [Landify - Landing Page UI Kit v2](<https://www.figma.com/design/088L8rIAnc29ArpVGDNG5y/Landify---Landing-Page-UI-Kit-v2-(Community)?node-id=1973-6598&t=KM6f0RjBK3Yq0WT8-0>) from Figma Community.
+- Android
+- iOS
 
-## 🎥 Responsive Demo
+## Benefits
 
-Below is a Video demonstrating the responsive design of the Landify Landing Page, built with Flutter. The site seamlessly adapts to different screen sizes, ensuring a smooth and consistent user experience across desktop, tablet, and mobile devices.
+- **Secure Browsing**: Protect your data from hackers, ISPs, and other third parties with BGTunnel’s encrypted VPN tunnel.
+- **Access Blocked Content**: Bypass censorship and geographic restrictions to enjoy full access to websites and streaming platforms.
+- **Public Wi-Fi Security**: Safeguard your connection when using public Wi-Fi networks by encrypting your data.
 
-![Demo](./screenshots/demo.gif)
+## Contact & Support
 
-This showcases the flexibility and power of Flutter web in creating adaptive web applications.
+- **Website**: [https://bgtunnel.com](https://bgtunnel.com)
+- **Email**: cakrabudiman@icloud.com
 
-## 📸 Screenshots
+## License
 
-### Desktop Version
-
-![Desktop Screenshot 1](./screenshots/dekstop-1.png)
-![Desktop Screenshot 2](./screenshots/dekstop-2.png)
-
-### Mobile Version
-
-<p align="center" style="display: flex; justify-content: space-between;">
-  <img src="./screenshots/mobile-1.png" alt="Mobile Screenshot 1" width="49%" />
-  <img src="./screenshots/mobile-2.png" alt="Mobile Screenshot 2" width="49%" />
-</p>
-Here's the updated text with the `Breakpoint Utility` and `ResponsiveRowColumn` sections grouped together under a single section:
-
----
-
-## 📁 Responsive Design Utilities
-
-The project includes two important classes, `Breakpoints` and `ResponsiveRowColumn`, which are essential for creating a responsive design.
-
-### Breakpoints
-
-The `breakpoint.dart` file contains a custom class designed to define breakpoints for different device sizes, including mobile, tablet, laptop, and desktop. This class is inspired by the [responsive_framework](https://pub.dev/packages/responsive_framework) library but has been tailored to suit specific needs.
-
-#### Purpose
-
-The goal of creating this custom breakpoint class is to:
-
-- **Customize Breakpoints**: Adjust the design to fit specific requirements and preferences.
-- **Reduce Rebuilds**: Minimize unnecessary rebuilds by avoiding the use of additional variables like screen width or height.
-
-### ResponsiveRowColumn
-
-The `ResponsiveRowColumn` class is copied from the `responsive_framework` package. It is used to switch easily between a row and a column layout depending on the screen size, enhancing the responsive design capabilities.
+BGTunnel is a proprietary software with a focus on user privacy and security. All rights reserved.
 
 ---
 
-## ✨ Acknowledgments
-
-Thanks to the Figma community for providing the Landify UI Kit.
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License. You are free to use, modify, and distribute this project, as long as the original copyright notice and this permission notice appear in all copies or substantial portions of the software.
+Stay secure, stay anonymous, and enjoy unrestricted access with BGTunnel!
