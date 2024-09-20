@@ -1,0 +1,69 @@
+name: landify_design_flutter
+description: "A Flutter web project implementing the Landify Landing Page UI Kit to explore and learn Flutter web development."
+publish_to: "none"
+version: 1.0.0+2
+
+environment:
+  sdk: ">=3.4.1 <4.0.0"
+
+dependencies:
+  animate_gradient: ^0.0.3
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_layout_grid: ^2.0.7
+  flutter_riverpod: ^2.5.1
+  go_router: ^14.2.7
+  google_fonts: ^6.2.1
+  syncfusion_flutter_maps: ^26.2.14
+  metaballs: ^1.5.0
+  # State
+  # get: ^4.6.6
+  provider: ^6.1.2
+
+  # Syncfusion
+  syncfusion_flutter_charts: ^26.2.7
+
+  desktop_window: ^0.4.0
+
+  # Icons
+  flutter_lucide: ^1.4.0
+
+  # Storage
+  shared_preferences: ^2.3.0
+
+  # URL
+  url_strategy: ^0.2.0
+  url_launcher: ^6.3.0
+
+  loading_animation_widget: ^1.2.1
+  intl: ^0.19.0
+  image_picker: ^1.1.2
+  flutter_svg: ^2.0.10+1
+  riverpod_annotation: ^2.3.5
+  dio: ^5.7.0
+  dart_jsonwebtoken: ^2.14.0
+  flutter_dotenv: ^5.1.0
+  timeago: ^3.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner:
+  riverpod_generator:
+  riverpod_lint:
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/
+    - assets/world_map.json
+    - assets/servers.json
+
+
