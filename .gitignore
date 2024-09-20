@@ -32,6 +32,7 @@ migrate_working_dir/
 /build/
 lib/dashboard_admin/
 lib/dashboard_user/
+.env
 
 # Symbolication related
 app.*.symbols
