@@ -1,3 +1,4 @@
+import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/responsive_row_column.dart';
@@ -12,12 +13,8 @@ class MainSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Stack(
+    return const Stack(
       children: [
-        AnimatedColorBackground(
-          primaryColor: Colors.deepPurple,
-          secondaryColor: Colors.blue,
-        ),
         MaxContainer(child: MainContent()),
       ],
     );
@@ -56,8 +53,14 @@ class MainContent extends StatelessWidget {
           ),
           ResponsiveRowColumnItem(
               rowFit: FlexFit.tight,
-              child:
-                  Image.asset('assets/screenshot_mobile_1.png', height: 760)),
+              child: SizedBox(
+                height: 700,
+                child: DeviceFrame(
+                    device: Devices.ios.iPhone13ProMax,
+                    isFrameVisible: true,
+                    orientation: Orientation.portrait,
+                    screen: Image.asset('assets/mockup.jpeg')),
+              )),
         ],
       ),
     );
@@ -70,7 +73,6 @@ class _InstructionButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final breakpoint = BreakpointProvider.of(context);
-    final isMobile = breakpoint.equals(Breakpoint.mobile);
 
     return Align(
       alignment: breakpoint.largerOrEqualToTablet
@@ -83,13 +85,13 @@ class _InstructionButtons extends StatelessWidget {
           children: [
             SizedBox(width: 16),
             OpenStore(
-              imagePath: 'assets/google_play.png',
+              imagePath: 'assets/google_play.svg',
               url:
                   'https://play.google.com/store/apps/details?id=com.app.bgtunnel',
             ),
             SizedBox(width: 16),
             OpenStore(
-              imagePath: 'assets/app_store.png',
+              imagePath: 'assets/app_store.svg',
               url:
                   'https://apps.apple.com/us/app/bgtunnel-secure-vpn-privacy/id6608970030',
             ),

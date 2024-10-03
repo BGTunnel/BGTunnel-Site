@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../dashboard_admin/helpers/services/title_service.dart';
+import 'package:landify_design_flutter/title_service.dart';
 import '../sections/footer_section.dart';
 import '../shared/custom_appbar.dart';
 

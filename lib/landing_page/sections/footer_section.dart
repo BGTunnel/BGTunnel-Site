@@ -117,13 +117,13 @@ class _GetApps extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   const OpenStore(
-                    imagePath: 'assets/google_play.png',
+                    imagePath: 'assets/google_play.svg',
                     url:
                         'https://play.google.com/store/apps/details?id=com.app.bgtunnel',
                   ),
                   const SizedBox(height: 16),
                   const OpenStore(
-                    imagePath: 'assets/app_store.png',
+                    imagePath: 'assets/app_store.svg',
                     url:
                         'https://apps.apple.com/us/app/bgtunnel-secure-vpn-privacy/id6608970030',
                   ),
@@ -133,13 +133,13 @@ class _GetApps extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   OpenStore(
-                    imagePath: 'assets/google_play.png',
+                    imagePath: 'assets/google_play.svg',
                     url:
                         'https://play.google.com/store/apps/details?id=com.app.bgtunnel',
                   ),
                   SizedBox(width: 16),
                   OpenStore(
-                    imagePath: 'assets/app_store.png',
+                    imagePath: 'assets/app_store.svg',
                     url:
                         'https://apps.apple.com/us/app/bgtunnel-secure-vpn-privacy/id6608970030',
                   ),

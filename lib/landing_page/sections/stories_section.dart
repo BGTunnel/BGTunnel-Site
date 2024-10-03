@@ -1,13 +1,12 @@
+import 'package:aura_box/aura_box.dart';
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/label_with_description.dart';
-import 'package:landify_design_flutter/landing_page/design_systems/components/main_background.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/landing_page/utils/breakpoint.dart';
 import 'dart:math';
-import 'package:flutter/material.dart';
 
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
@@ -15,61 +14,77 @@ class StoriesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final breakpoint = BreakpointProvider.of(context);
-    final random = Random();
-
-    // Create a list of circles
-    List<Widget> circles = List.generate(10, (index) {
-      double size =
-          50 + random.nextDouble() * 100; // Random size between 50 and 150
-      double left = random.nextDouble() *
-          MediaQuery.of(context).size.width; // Random horizontal position
-      double top = random.nextDouble() *
-          MediaQuery.of(context).size.height; // Random vertical position
-
-      return Positioned(
-        left: left,
-        top: top,
-        child: Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.blue
-                .withOpacity(0.1), // Adjust color and opacity as needed
-          ),
-        ),
-      );
-    });
 
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.only(top: 64, bottom: 96),
-      child: MaxContainer(
-        child: Stack(
-          children: [
-            // Random circles
-            ...circles,
-            // Original background image
-            Image.asset('assets/quote_background.png', height: 116),
-            ResponsiveRowColumn(
-              layout:
-                  breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
-              rowSpacing: 32,
-              children: const [
-                ResponsiveRowColumnItem(
-                  rowFit: FlexFit.tight,
-                  child: _HeaderWithStories(),
-                ),
-                ResponsiveRowColumnItem(
-                  rowFit: FlexFit.tight,
-                  child: _Stories(),
+        width: double.infinity,
+        padding: const EdgeInsets.all(50),
+        child: MaxContainer(
+            child: AuraBox(
+          spots: [
+            AuraSpot(
+              color: Colors.deepPurple,
+              radius: 500.0,
+              alignment: Alignment.topCenter,
+              blurRadius: 55.0,
+              stops: const [0.0, 0.5],
+            ),
+            AuraSpot(
+              color: Colors.lightBlue,
+              radius: 150.0,
+              alignment: Alignment.bottomRight,
+              blurRadius: 50.0,
+              stops: const [0.0, 0.7],
+            ),
+            AuraSpot(
+              color: Colors.amber,
+              radius: 150.0,
+              alignment: Alignment.topLeft,
+              blurRadius: 10.0,
+              stops: const [0.0, 0.7],
+            ),
+          ],
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Container(
+            padding: const EdgeInsets.only(top: 64, bottom: 96),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1), // Glass effect
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.white.withOpacity(0.3)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blueAccent.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
-          ],
-        ),
-      ),
-    );
+            child: Stack(
+              children: [
+                Image.asset('assets/quote_background.png', height: 116),
+                ResponsiveRowColumn(
+                  layout: breakpoint
+                      .getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
+                  rowSpacing: 32,
+                  children: const [
+                    ResponsiveRowColumnItem(
+                      rowFit: FlexFit.tight,
+                      child: _HeaderWithStories(),
+                    ),
+                    ResponsiveRowColumnItem(
+                      rowFit: FlexFit.tight,
+                      child: _Stories(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )));
   }
 }
 

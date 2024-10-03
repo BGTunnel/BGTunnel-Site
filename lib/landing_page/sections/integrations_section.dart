@@ -1,9 +1,6 @@
-import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
-import 'package:http/http.dart' as http;
 
 class IntegrationsSection extends StatelessWidget {
   const IntegrationsSection({super.key});

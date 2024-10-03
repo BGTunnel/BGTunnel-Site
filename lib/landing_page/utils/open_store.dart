@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class OpenStore extends StatelessWidget {
   final String imagePath;
   final String url;
@@ -15,9 +17,9 @@ class OpenStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: _openUrlInNewTab,
-      child: Image.asset(
+      child: SvgPicture.asset(
         imagePath,
-        height: 40,
+        height: 60,
       ),
     );
   }

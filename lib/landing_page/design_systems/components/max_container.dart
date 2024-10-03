@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:landify_design_flutter/landing_page/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/landing_page/utils/breakpoint.dart';
 import 'package:landify_design_flutter/landing_page/utils/constants.dart';
 
