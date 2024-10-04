@@ -11,13 +11,13 @@ class CompaniesSections extends StatelessWidget {
     return MaxContainer(
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 32),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
+        child: const Padding(
+          padding: EdgeInsets.all(16),
           child: Wrap(
             spacing: 64,
             runSpacing: 32,
             alignment: WrapAlignment.center,
-            children: const [
+            children: [
               HoverImage(imagePath: 'assets/logo_hubspot.png'),
               HoverImage(imagePath: 'assets/logo_strapi.png'),
               HoverImage(imagePath: 'assets/logo_microsoft.png'),

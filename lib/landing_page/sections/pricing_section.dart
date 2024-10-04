@@ -75,8 +75,7 @@ class ResponsivePricingCards extends StatelessWidget {
           "Standard encryption methods",
           "Monthly data cap of 10GB"
         ],
-        backgroundColor: const Color.fromARGB(255, 237, 226, 247),
-        textColor: Colors.black,
+        textColor: Colors.white,
         buttonColor: Colors.blue,
         cardWidth: 250.0,
       ),
@@ -111,8 +110,7 @@ class ResponsivePricingCards extends StatelessWidget {
           "No data cap",
           "Support for unlimited devices"
         ],
-        backgroundColor: const Color.fromARGB(255, 237, 226, 247),
-        textColor: Colors.black,
+        textColor: Colors.white,
         buttonColor: Colors.blue,
         cardWidth: 250.0,
       ),
@@ -131,90 +129,104 @@ class ResponsivePricingCards extends StatelessWidget {
     required double cardWidth,
   }) {
     return GestureDetector(
-      onTap: () {
-        // Handle card tap
-      },
-      child: Container(
-        width: cardWidth,
-        height: 500,
-        padding: const EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          color: gradient == null ? backgroundColor : null,
-          gradient: gradient,
-          borderRadius: BorderRadius.circular(12.0),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 8.0,
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
+        onTap: () {
+          // Handle card tap
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.1), // Glass effect
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.white.withOpacity(0.3)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueAccent.withOpacity(0.1),
+                spreadRadius: 1,
+                blurRadius: 10,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: Container(
+            width: cardWidth,
+            height: 500,
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: gradient == null ? backgroundColor : null,
+              gradient: gradient,
+              borderRadius: BorderRadius.circular(12.0),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 8.0,
                 ),
-              ),
+              ],
             ),
-            const SizedBox(height: 16.0),
-            Center(
-              child: Text(
-                price,
-                style: TextStyle(
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                ),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              description,
-              style: TextStyle(
-                fontSize: 14.0,
-                color: textColor.withOpacity(0.7),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: features
-                  .map(
-                    (feature) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.check_circle,
-                            color: textColor,
-                            size: 20.0,
-                          ),
-                          const SizedBox(width: 8.0),
-                          Expanded(
-                            child: Text(
-                              feature,
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: textColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+              children: [
+                Center(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: textColor,
                     ),
-                  )
-                  .toList(),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Center(
+                  child: Text(
+                    price,
+                    style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
+                      color: textColor,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: textColor.withOpacity(0.7),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: features
+                      .map(
+                        (feature) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.check_circle,
+                                color: textColor,
+                                size: 20.0,
+                              ),
+                              const SizedBox(width: 8.0),
+                              Expanded(
+                                child: Text(
+                                  feature,
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    color: textColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+                const SizedBox(height: 16.0),
+              ],
             ),
-            const SizedBox(height: 16.0),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }

@@ -1,10 +1,12 @@
-import 'package:aura_box/aura_box.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/typography/text_styles.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/colors/colors.dart';
+import 'package:landify_design_flutter/landing_page/shared/custom_appbar.dart';
 import 'package:landify_design_flutter/landing_page/utils/breakpoint.dart';
 import 'dart:math';
 
@@ -15,41 +17,27 @@ class StoriesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final breakpoint = BreakpointProvider.of(context);
 
-    return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(50),
-        child: MaxContainer(
-            child: AuraBox(
-          spots: [
-            AuraSpot(
-              color: Colors.deepPurple,
-              radius: 500.0,
-              alignment: Alignment.topCenter,
-              blurRadius: 55.0,
-              stops: const [0.0, 0.5],
-            ),
-            AuraSpot(
-              color: Colors.lightBlue,
-              radius: 150.0,
-              alignment: Alignment.bottomRight,
-              blurRadius: 50.0,
-              stops: const [0.0, 0.7],
-            ),
-            AuraSpot(
-              color: Colors.amber,
-              radius: 150.0,
-              alignment: Alignment.topLeft,
-              blurRadius: 10.0,
-              stops: const [0.0, 0.7],
-            ),
-          ],
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Container(
-            padding: const EdgeInsets.only(top: 64, bottom: 96),
+    int featuresLength = 6;
+    int columnSizes = 1;
+    int rowSizes = featuresLength;
+
+    if (breakpoint.equals(Breakpoint.desktop)) {
+      columnSizes = 3;
+      rowSizes = featuresLength ~/ columnSizes;
+    } else if (breakpoint.largerThanLaptop) {
+      columnSizes = 2;
+      rowSizes = featuresLength ~/ columnSizes;
+    }
+
+    return MaxContainer(
+        padding: Responsive.isDesktop(context)
+            ? const EdgeInsets.symmetric(horizontal: 50, vertical: 20)
+            : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+        border: BorderRadius.circular(20),
+        child: Container(
+            padding: Responsive.isDesktop(context)
+                ? const EdgeInsets.only(top: 64, bottom: 96)
+                : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.1), // Glass effect
               borderRadius: BorderRadius.circular(20),
@@ -63,28 +51,31 @@ class StoriesSection extends StatelessWidget {
                 ),
               ],
             ),
-            child: Stack(
-              children: [
-                Image.asset('assets/quote_background.png', height: 116),
-                ResponsiveRowColumn(
-                  layout: breakpoint
-                      .getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
-                  rowSpacing: 32,
-                  children: const [
-                    ResponsiveRowColumnItem(
-                      rowFit: FlexFit.tight,
-                      child: _HeaderWithStories(),
-                    ),
-                    ResponsiveRowColumnItem(
-                      rowFit: FlexFit.tight,
-                      child: _Stories(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        )));
+            child: Padding(
+              padding: Responsive.isDesktop(context)
+                  ? const EdgeInsets.only(top: 64, bottom: 96)
+                  : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+              child: Stack(
+                children: [
+                  Image.asset('assets/quote_background.png', height: 116),
+                  ResponsiveRowColumn(
+                    layout: breakpoint
+                        .getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
+                    rowSpacing: 32,
+                    children: const [
+                      ResponsiveRowColumnItem(
+                        rowFit: FlexFit.tight,
+                        child: _HeaderWithStories(),
+                      ),
+                      ResponsiveRowColumnItem(
+                        rowFit: FlexFit.tight,
+                        child: _Stories(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )));
   }
 }
 
@@ -108,7 +99,7 @@ class _HeaderWithStories extends StatelessWidget {
         return Padding(
           padding: padding,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const LabelWithDescription(
                 title: 'Real Stories from Real Customers',
@@ -212,56 +203,58 @@ class _Stories extends StatelessWidget {
     return SizedBox(
       width: width,
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1), // Glass effect
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.white.withOpacity(0.3)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.greenAccent.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.all(16),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset('assets/quote.png', height: 16),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          story,
-                          style: AppTextStyles.bodyLargeRegular.copyWith(
-                            color: AppColors.neutral900,
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                        Text(
-                          personName,
-                          style: AppTextStyles.bodyLargeBold.copyWith(
-                            color: AppColors.neutral900,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              )
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.1), // Glass effect
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.white.withOpacity(0.3)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.greenAccent.withOpacity(0.1),
+                spreadRadius: 1,
+                blurRadius: 10,
+                offset: const Offset(0, 3),
+              ),
             ],
           ),
-        ),
-      ),
+          padding: const EdgeInsets.all(16),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10), // Blur effect
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/quote.png', height: 16),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              story,
+                              style: AppTextStyles.bodyLargeRegular.copyWith(
+                                color: AppColors.neutral900,
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                            Text(
+                              personName,
+                              style: AppTextStyles.bodyLargeBold.copyWith(
+                                color: AppColors.neutral900,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )),
     );
   }
 }
@@ -281,57 +274,61 @@ class _StoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1), // Glass effect
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.white.withOpacity(0.3)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.greenAccent.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(0, 3),
+    return Padding(
+        padding: Responsive.isDesktop(context)
+            ? const EdgeInsets.all(16)
+            : const EdgeInsets.all(15),
+        child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1), // Glass effect
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.white.withOpacity(0.3)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.greenAccent.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
+                ),
+              ],
             ),
-          ],
-        ),
-        padding: const EdgeInsets.all(16),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              icon,
-              const SizedBox(height: 32),
-              Row(
+            padding: const EdgeInsets.all(16),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/quote.png', height: 16),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          story,
-                          style: AppTextStyles.bodyLargeRegular.copyWith(
-                            color: AppColors.neutral900,
-                          ),
+                  icon,
+                  const SizedBox(height: 32),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/quote.png', height: 16),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              story,
+                              style: AppTextStyles.bodyLargeRegular.copyWith(
+                                color: AppColors.neutral900,
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                            Text(
+                              personName,
+                              style: AppTextStyles.bodyLargeBold.copyWith(
+                                color: AppColors.neutral900,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 24),
-                        Text(
-                          personName,
-                          style: AppTextStyles.bodyLargeBold.copyWith(
-                            color: AppColors.neutral900,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    ],
+                  )
                 ],
-              )
-            ],
-          ),
-        ));
+              ),
+            )));
   }
 }

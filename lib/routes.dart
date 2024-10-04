@@ -8,10 +8,14 @@ import 'package:landify_design_flutter/main.dart';
 /// GoRouter configuration
 final GoRouter router = GoRouter(
   routes: [
-    GoRoute(
+     GoRoute(
       path: '/',
-      pageBuilder: (context, state) =>
-          const NoTransitionPage(child: LandingPage()),
+      pageBuilder: (context, state) {
+        
+        return NoTransitionPage(
+          child: LandingPage(),
+        );
+      },
     ),
     GoRoute(
       path: '/privacy',

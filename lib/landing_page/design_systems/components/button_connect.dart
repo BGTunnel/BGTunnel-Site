@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class ConnectButton extends StatefulWidget {
+  final void Function() onTap;
   Color shadowColor = Colors.deepOrange.withOpacity(0.6);
   Color containerColor = Colors.orange.withOpacity(0.6);
   Color ringColor = Colors.deepOrange.withOpacity(0.6);
   Color ringOutsideColor = Colors.deepOrange.withOpacity(0.6);
   Color glowingColor = Colors.deepOrange.withOpacity(0.6);
-  final double height;
-  final double width;
-  Widget iconValue = const Icon(
+  Widget iconValue = Icon(
     Icons.warning,
     color: Colors.orange,
     size: 50,
@@ -24,13 +23,13 @@ class ConnectButton extends StatefulWidget {
   ];
   ConnectButton(
       {super.key,
+      required this.onTap,
       required this.shadowColor,
       required this.containerColor,
+      required this.iconValue,
       required this.colorRing,
       required this.ringOutsideColor,
-      required this.glowingColor,
-      required this.height,
-      required this.width});
+      required this.glowingColor});
   @override
   _ConnectButtonState createState() => _ConnectButtonState();
 }
@@ -65,52 +64,57 @@ class _ConnectButtonState extends State<ConnectButton>
       animation: _controller,
       builder: (context, child) {
         return GestureDetector(
+            onTap: widget.onTap,
             child: Stack(
-          alignment: Alignment.center,
-          children: [
-            CustomPaint(
-              painter: RipplePainter(rippleAnimation.value),
-              size: Size(widget.width, widget.height),
-            ),
-            CustomPaint(
-              painter: GradientRingPainter(_controller.value, widget.colorRing,
-                  widget.ringOutsideColor, widget.glowingColor),
-              child: Container(
-                width: widget.width,
-                height: widget.height,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: widget.shadowColor,
-                      spreadRadius: 4,
-                      blurRadius: 16,
-                      offset: const Offset(0, 0),
-                    ),
-                  ],
+              alignment: Alignment.center,
+              children: [
+                CustomPaint(
+                  painter: RipplePainter(rippleAnimation.value),
+                  size: Size(180, 180),
                 ),
-                child: Center(
+                CustomPaint(
+                  painter: GradientRingPainter(
+                      _controller.value,
+                      widget.colorRing,
+                      widget.ringOutsideColor,
+                      widget.glowingColor),
                   child: Container(
-                    width: widget.width,
-                    height: widget.height,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.black,
                       boxShadow: [
                         BoxShadow(
-                          color: widget.containerColor,
-                          spreadRadius: 2,
-                          blurRadius: 8,
-                          offset: const Offset(0, 0),
+                          color: widget.shadowColor,
+                          spreadRadius: 4,
+                          blurRadius: 16,
+                          offset: Offset(0, 0),
                         ),
                       ],
                     ),
+                    child: Center(
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black,
+                          boxShadow: [
+                            BoxShadow(
+                              color: widget.containerColor,
+                              spreadRadius: 2,
+                              blurRadius: 8,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                        child: Center(child: widget.iconValue),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ],
-        ));
+              ],
+            ));
       },
     );
   }
@@ -159,7 +163,7 @@ class GradientRingPainter extends CustomPainter {
       ..color = glowingColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 20.0
-      ..maskFilter = const MaskFilter.blur(BlurStyle.outer, 20);
+      ..maskFilter = MaskFilter.blur(BlurStyle.outer, 20);
 
     // Drawing the glowing ring
     canvas.drawCircle(size.center(Offset.zero), size.width / 2, glowingPaint);

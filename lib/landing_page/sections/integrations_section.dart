@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
@@ -124,7 +123,7 @@ class _MapMarkerPageState extends State {
             tooltipSettings: const MapTooltipSettings(
               color: Color.fromRGBO(45, 45, 45, 1),
             ),
-            strokeColor: Colors.grey,
+            strokeColor: Colors.deepPurple,
             loadingBuilder: (BuildContext context) {
               return const SizedBox(
                 height: 25,
@@ -159,7 +158,7 @@ class _MapMarkerPageState extends State {
               );
             },
             strokeWidth: 0,
-            color: const Color.fromARGB(255, 203, 203, 203),
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
         ],
       ),
