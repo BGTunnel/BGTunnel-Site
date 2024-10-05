@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:landify_design_flutter/landing_page/design_systems/components/gradient_text.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/typography/text_styles.dart';
@@ -177,7 +178,7 @@ class _FeatureItem extends ConsumerWidget {
                     ? const EdgeInsets.symmetric(horizontal: 15, vertical: 15)
                     : const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1), // Glass effect
+                  color: Colors.grey.withOpacity(0.1), // Glass effect
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.white.withOpacity(0.3)),
                   boxShadow: [
@@ -196,8 +197,7 @@ class _FeatureItem extends ConsumerWidget {
                             sigmaX: 10, sigmaY: 10), // Blur effect
                         child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.white
-                                  .withOpacity(0.1), // Change opacity as needed
+                              color: Colors.transparent,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
@@ -223,11 +223,19 @@ class _FeatureItem extends ConsumerWidget {
                                     child: icon, // Your icon widget here
                                   ),
                                   const SizedBox(height: 24),
-                                  Text(
+                                  GradientText(
                                     title,
                                     style: AppTextStyles.displaySmallBold
                                         .copyWith(color: AppColors.neutral900),
-                                    textAlign: TextAlign.center,
+                                    gradient: !isConnected
+                                        ? const LinearGradient(colors: [
+                                            Color.fromARGB(255, 201, 5, 255),
+                                            Color.fromARGB(255, 136, 0, 255)
+                                          ])
+                                        : const LinearGradient(colors: [
+                                            Color.fromARGB(255, 255, 156, 156),
+                                            Color.fromARGB(255, 255, 206, 157)
+                                          ]),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(

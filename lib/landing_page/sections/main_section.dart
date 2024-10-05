@@ -1,6 +1,7 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/homeIOS.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/label_with_description.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/responsive_row_column.dart';
@@ -18,7 +19,15 @@ class MainSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const MaxContainer(child: MainContent());
+    return Stack(
+      children: [
+        SvgPicture.asset(
+          'assets/main.svg',
+          fit: BoxFit.cover,
+        ),
+        MaxContainer(child: MainContent())
+      ],
+    );
   }
 }
 

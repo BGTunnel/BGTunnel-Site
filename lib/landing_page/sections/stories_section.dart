@@ -10,6 +10,8 @@ import 'package:landify_design_flutter/landing_page/shared/custom_appbar.dart';
 import 'package:landify_design_flutter/landing_page/utils/breakpoint.dart';
 import 'dart:math';
 
+import '../design_systems/components/gradient_text.dart';
+
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
 
@@ -233,12 +235,14 @@ class _Stories extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              story,
-                              style: AppTextStyles.bodyLargeRegular.copyWith(
-                                color: AppColors.neutral900,
-                              ),
-                            ),
+                            GradientText(story,
+                                style: AppTextStyles.bodyLargeRegular.copyWith(
+                                  color: AppColors.neutral900,
+                                ),
+                                gradient: const LinearGradient(colors: [
+                                  Color.fromARGB(255, 173, 247, 255),
+                                  Color.fromARGB(255, 255, 236, 168)
+                                ])),
                             const SizedBox(height: 24),
                             Text(
                               personName,
@@ -285,7 +289,7 @@ class _StoryItem extends StatelessWidget {
               border: Border.all(color: Colors.white.withOpacity(0.3)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.greenAccent.withOpacity(0.1),
+                  color: Colors.deepPurple.withOpacity(0.1),
                   spreadRadius: 1,
                   blurRadius: 10,
                   offset: const Offset(0, 3),
@@ -309,12 +313,14 @@ class _StoryItem extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              story,
-                              style: AppTextStyles.bodyLargeRegular.copyWith(
-                                color: AppColors.neutral900,
-                              ),
-                            ),
+                            GradientText(story,
+                                style: AppTextStyles.bodyLargeRegular.copyWith(
+                                  color: AppColors.neutral900,
+                                ),
+                                gradient: const LinearGradient(colors: [
+                                  Color.fromARGB(255, 173, 247, 255),
+                                  Color.fromARGB(255, 255, 236, 168)
+                                ])),
                             const SizedBox(height: 24),
                             Text(
                               personName,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:landify_design_flutter/landing_page/design_systems/colors/colors.dart';
+
+import 'gradient_text.dart';
 
 class LogoShare extends StatelessWidget {
   const LogoShare({super.key});
@@ -15,13 +18,19 @@ class LogoShare extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Text(
-                    'BGTunnel',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                ],
+              GradientText(
+                'BGTunnel',
+                gradient: LinearGradient(
+                  colors: [
+                    const Color.fromARGB(255, 164, 47, 211),
+                    AppColors.kTextColorDark,
+                    Theme.of(context).scaffoldBackgroundColor,
+                    // Very dark cyan
+                  ],
+                  stops: [0.0, 0.5, 1.0],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
               GestureDetector(
                 child: SvgPicture.asset(

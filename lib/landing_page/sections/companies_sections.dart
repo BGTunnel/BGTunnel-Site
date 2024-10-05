@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/max_container.dart';
 
-import 'package:flutter/material.dart';
 
 class CompaniesSections extends StatelessWidget {
   const CompaniesSections({super.key});

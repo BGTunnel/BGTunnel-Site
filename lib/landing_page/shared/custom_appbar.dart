@@ -19,6 +19,7 @@ class CustomResponsiveAppBar extends StatelessWidget
     final isMobile = MediaQuery.of(context).size.width < 600;
 
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: isScrolled ? Colors.black : Colors.transparent,
       elevation: 0,
       title: isMobile

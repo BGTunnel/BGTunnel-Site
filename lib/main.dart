@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:landify_design_flutter/landing_page/design_systems/components/gradient_text.dart';
 import 'package:landify_design_flutter/landing_page/sections/achievements_section.dart';
 import 'package:landify_design_flutter/landing_page/sections/companies_sections.dart';
 import 'package:landify_design_flutter/landing_page/sections/features_section.dart';
@@ -13,7 +13,6 @@ import 'package:landify_design_flutter/landing_page/sections/stories_section.dar
 import 'package:landify_design_flutter/landing_page/shared/custom_appbar.dart';
 import 'package:landify_design_flutter/navigation_services.dart';
 import 'package:landify_design_flutter/title_service.dart';
-import 'landing_page/shared/random_shape.dart';
 import 'landing_page/utils/breakpoint.dart';
 import 'landing_page/utils/connection_provider.dart';
 import 'routes.dart';
@@ -144,10 +143,9 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                       ]
                     : [
                         const Color.fromARGB(
-                            255, 31, 31, 31), // Dark Purple (Indigo)
-                        const Color.fromARGB(
-                            255, 43, 43, 43), // Dark Purple (Purple)
-                        Colors.black,
+                            255, 16, 16, 16), // Dark Purple (Indigo)
+                        const Color.fromARGB(255, 16, 16, 16),
+                        const Color.fromARGB(255, 16, 16, 16),
                       ],
               ),
             ),
@@ -160,7 +158,7 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                     children: [
                       Image.asset('assets/logo.png', height: 32, width: 32),
                       const SizedBox(
-                        width: 10,
+                        width: 4,
                       ),
                       TextButton(
                           onPressed: () {
@@ -168,7 +166,7 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                           },
                           child: Text(
                             'BGTunnel',
-                            style: GoogleFonts.ubuntuCondensed(
+                            style: GoogleFonts.protestStrike(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )),
                     ],
@@ -178,50 +176,70 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                       onPressed: () {
                         _scrollToIndex(_featuresSectionKey);
                       },
-                      child: Text(
+                      child: GradientText(
                         'Features',
                         style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_storiesSectionKey);
                       },
-                      child: Text(
+                      child: GradientText(
                         'Stories',
                         style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_achievementsSectionKey);
                       },
-                      child: Text(
+                      child: GradientText(
                         'Achievements',
                         style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_pricingPageKey);
                       },
-                      child: Text(
+                      child: GradientText(
                         'Pricing',
                         style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_integrationsSectionKey);
                       },
-                      child: Text(
+                      child: GradientText(
                         'Locations',
                         style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
                       ),
                     ),
                   ],
@@ -232,31 +250,71 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                       onPressed: () {
                         _scrollToIndex(_featuresSectionKey);
                       },
-                      child: const Text('Features'),
+                      child: GradientText(
+                        'Features',
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_storiesSectionKey);
                       },
-                      child: const Text('Stories'),
+                      child: GradientText(
+                        'Stories',
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_achievementsSectionKey);
                       },
-                      child: const Text('Achievements'),
+                      child: GradientText(
+                        'Achievements',
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_pricingPageKey);
                       },
-                      child: const Text('Pricing'),
+                      child: GradientText(
+                        'Pricing',
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 215, 170, 255)
+                        ]),
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
                         _scrollToIndex(_integrationsSectionKey);
                       },
-                      child: const Text('Locations'),
+                      child: GradientText(
+                        'Locations',
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 219, 219, 219),
+                          Color.fromARGB(255, 136, 0, 255)
+                        ]),
+                      ),
                     ),
                   ],
                 ),
