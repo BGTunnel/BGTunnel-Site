@@ -7,12 +7,9 @@ import 'package:landify_design_flutter/landing_page/design_systems/components/la
 import 'package:landify_design_flutter/landing_page/design_systems/components/responsive_row_column.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/max_container.dart';
 import 'package:landify_design_flutter/landing_page/utils/breakpoint.dart';
-import 'package:landify_design_flutter/landing_page/utils/connection_provider.dart';
 import 'package:landify_design_flutter/landing_page/utils/constants.dart';
 import 'package:landify_design_flutter/landing_page/utils/open_store.dart';
-
 import '../shared/custom_appbar.dart';
-import '../shared/random_shape.dart';
 
 class MainSection extends ConsumerWidget {
   const MainSection({super.key});
@@ -21,11 +18,12 @@ class MainSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [
-        SvgPicture.asset(
-          'assets/main.svg',
+        Image.asset(
+          'assets/back1.png',
+          width: double.infinity,
           fit: BoxFit.cover,
         ),
-        MaxContainer(child: MainContent())
+        const MaxContainer(child: MainContent())
       ],
     );
   }

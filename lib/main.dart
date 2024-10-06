@@ -5,11 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/gradient_text.dart';
 import 'package:landify_design_flutter/landing_page/sections/achievements_section.dart';
 import 'package:landify_design_flutter/landing_page/sections/companies_sections.dart';
+import 'package:landify_design_flutter/landing_page/sections/faq.dart';
 import 'package:landify_design_flutter/landing_page/sections/features_section.dart';
 import 'package:landify_design_flutter/landing_page/sections/footer_section.dart';
 import 'package:landify_design_flutter/landing_page/sections/main_section.dart';
 import 'package:landify_design_flutter/landing_page/sections/pricing_section.dart';
 import 'package:landify_design_flutter/landing_page/sections/stories_section.dart';
+import 'package:landify_design_flutter/landing_page/sections/why_choose.dart';
 import 'package:landify_design_flutter/landing_page/shared/custom_appbar.dart';
 import 'package:landify_design_flutter/navigation_services.dart';
 import 'package:landify_design_flutter/title_service.dart';
@@ -327,8 +329,9 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                       const CompaniesSections(),
                       FeaturesSection(key: _featuresSectionKey),
                       StoriesSection(key: _storiesSectionKey),
+                      const WhyChooseSection(),
                       AchievementsSection(key: _achievementsSectionKey),
-                      PricingPage(key: _pricingPageKey),
+                      FAQSection(key: _pricingPageKey),
                       IntegrationsSection(key: _integrationsSectionKey),
                       const FooterSection(),
                     ],

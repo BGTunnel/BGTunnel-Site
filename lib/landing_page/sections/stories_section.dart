@@ -8,13 +8,28 @@ import 'package:landify_design_flutter/landing_page/design_systems/typography/te
 import 'package:landify_design_flutter/landing_page/design_systems/colors/colors.dart';
 import 'package:landify_design_flutter/landing_page/shared/custom_appbar.dart';
 import 'package:landify_design_flutter/landing_page/utils/breakpoint.dart';
-import 'dart:math';
-
 import '../design_systems/components/gradient_text.dart';
 
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Image.asset(
+          'assets/back3.png',
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
+        const MaxContainer(child: StoriesContent())
+      ],
+    );
+  }
+}
+
+class StoriesContent extends StatelessWidget {
+  const StoriesContent({super.key});
   @override
   Widget build(BuildContext context) {
     final breakpoint = BreakpointProvider.of(context);
@@ -30,54 +45,48 @@ class StoriesSection extends StatelessWidget {
       columnSizes = 2;
       rowSizes = featuresLength ~/ columnSizes;
     }
-
-    return MaxContainer(
+    return Container(
         padding: Responsive.isDesktop(context)
-            ? const EdgeInsets.symmetric(horizontal: 50, vertical: 20)
+            ? const EdgeInsets.only(top: 64, bottom: 96)
             : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-        border: BorderRadius.circular(20),
-        child: Container(
-            padding: Responsive.isDesktop(context)
-                ? const EdgeInsets.only(top: 64, bottom: 96)
-                : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1), // Glass effect
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.white.withOpacity(0.3)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blueAccent.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 10,
-                  offset: const Offset(0, 3),
-                ),
-              ],
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.1), // Glass effect
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white.withOpacity(0.3)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blueAccent.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 10,
+              offset: const Offset(0, 3),
             ),
-            child: Padding(
-              padding: Responsive.isDesktop(context)
-                  ? const EdgeInsets.only(top: 64, bottom: 96)
-                  : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-              child: Stack(
-                children: [
-                  Image.asset('assets/quote_background.png', height: 116),
-                  ResponsiveRowColumn(
-                    layout: breakpoint
-                        .getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
-                    rowSpacing: 32,
-                    children: const [
-                      ResponsiveRowColumnItem(
-                        rowFit: FlexFit.tight,
-                        child: _HeaderWithStories(),
-                      ),
-                      ResponsiveRowColumnItem(
-                        rowFit: FlexFit.tight,
-                        child: _Stories(),
-                      ),
-                    ],
+          ],
+        ),
+        child: Padding(
+          padding: Responsive.isDesktop(context)
+              ? const EdgeInsets.only(top: 64, bottom: 96)
+              : const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+          child: Stack(
+            children: [
+              Image.asset('assets/quote_background.png', height: 116),
+              ResponsiveRowColumn(
+                layout:
+                    breakpoint.getRowTypeWhenLargerOrEqualTo(Breakpoint.laptop),
+                rowSpacing: 32,
+                children: const [
+                  ResponsiveRowColumnItem(
+                    rowFit: FlexFit.tight,
+                    child: _HeaderWithStories(),
+                  ),
+                  ResponsiveRowColumnItem(
+                    rowFit: FlexFit.tight,
+                    child: _Stories(),
                   ),
                 ],
               ),
-            )));
+            ],
+          ),
+        ));
   }
 }
 

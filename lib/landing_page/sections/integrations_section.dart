@@ -391,4 +391,6 @@ class AppTextStyles {
       TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
   static const bodyMediumSemiBold =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
+
+  static var displaySmallBold;
 }

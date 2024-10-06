@@ -61,7 +61,7 @@ class _LabelWithDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return const LabelWithDescription(
       title: 'Trusted Worldwide',
-      subtitle: 'Trusted by over 600 million users and 10,000 teams',
+      subtitle: 'Trusted by over 2 million users and 200,000 premium users',
     );
   }
 }
@@ -153,6 +153,7 @@ class _AchievementItem extends StatelessWidget {
                 title: title,
                 subtitle: subtitle,
                 labelWithDescriptionType: LabelWithDescriptionType.small,
+                labelWithDescriptionAlign: LabelWithDescriptionAlign.start,
               ),
             ),
           ],

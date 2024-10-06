@@ -1,4 +1,4 @@
-import 'dart:async';
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,8 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/button_connect.dart';
 import 'package:landify_design_flutter/landing_page/design_systems/components/logo_share.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
 import '../../utils/connection_provider.dart';
 import '../colors/colors.dart';
 import 'backgroundMap.dart';
